@@ -138,8 +138,8 @@ module.exports = function(grunt) {
         return false;
       }
 
-      var re = new RegExp(options.site_url, "g"),
-      output = ret.output.replace(re, 'XXXSITEURLXXX');
+      
+      var output = ret.output;
 
       // Write output to file using native Grunt methods
       grunt.file.write(paths.file, output);
@@ -169,12 +169,9 @@ module.exports = function(grunt) {
             }
         });
 
-        var file = grunt.file.read(options.backup_to),
-            re = new RegExp('XXXSITEURLXXX', "g"),
-            importText = file.replace(re, options.site_url);
+        var file = grunt.file.read(options.backup_to);
 
-
-        grunt.file.write(options.backup_to, importText);
+        grunt.file.write(options.backup_to, file);
 
 
 
@@ -205,11 +202,9 @@ module.exports = function(grunt) {
         return false;
       }
       else {
-        var file = grunt.file.read(options.backup_to),
-            re = new RegExp(options.site_url, "g"),
-            importText = file.replace(re, 'XXXSITEURLXXX');
+        var file = grunt.file.read(options.backup_to);
 
-        grunt.file.write(options.backup_to, importText);
+        grunt.file.write(options.backup_to, file);
           
         return true;
       }
